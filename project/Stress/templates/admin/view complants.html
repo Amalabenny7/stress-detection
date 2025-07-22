@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/adm_view_complaints_search">
+  <table width="200" border="1">
+  <tr>
+      <td>From date<input type="date" name="textfield" id="textfield" /><td>
+      <td>To date <input type="date" name="textfield1" id="teextfield" /></td>
+    <td colspan="3"><input type="submit" name="button" id="button" value="Search" /></td>
+  </tr>
+
+
+  <tr>
+    <td width="33">Sl.no</td>
+    <td width="33">Date</td>
+    <td width="29">User</td>
+    <td width="37">Complants</td>
+    <td width="34">Reply</td>
+  </tr>
+      {% for i in data %}
+  <tr>
+    <td>&nbsp;{{ loop.index }}</td>
+    <td>&nbsp;{{ i['Date'] }}</td>
+    <td>&nbsp;{{ i['Name'] }}</td>
+    <td>&nbsp;{{ i['Complaint'] }}</td>
+    <td>{% if i['Status']=='pending' %}<a href="/adm_reply/{{ i['C_id']}}">Reply</a>{% else %}{{ i['Reply'] }}{% endif %}</td>
+  </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/view_user_request_accept_post">
+  <table width="200" border="1">
+    <tr>
+      <td colspan="2"><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" /></td>
+      <td><input type="submit" name="button" id="button" value="Search" /></td>
+    </tr>
+    <tr>
+      <td>#</td>
+      <td>Date</td>
+      <td>User</td>
+        <td>Status</td>
+        <td></td>
+    </tr>
+    {% for i in data %}
+    <tr>
+    <td>{{ loop.index }}</td>
+      <td>&nbsp;{{ i['Date'] }}</td>
+      <td>&nbsp;{{ i['Name'] }}</td>
+      <td>&nbsp;{{ i['Status'] }}</td>
+      <td><a href="/user_reject_request/{{ i['Req_id'] }}">Reject</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
